@@ -1,18 +1,18 @@
-import './App.css';
-import { useEffect, useState, useRef } from 'react';
+import "./App.css";
+import { useEffect, useState, useRef } from "react";
 import {
   createChatUserComponent,
   createChatGuestComponent,
-} from './chatComponent/chatContainers/chatContainers';
+} from "./chatContainers/chatContainers";
 
 function App() {
-  const [message, setMessage] = useState('');
-  const [user, setUser] = useState('');
+  const [message, setMessage] = useState("");
+  const [user, setUser] = useState("");
 
   const ws: any = useRef(null);
 
   useEffect(() => {
-    const socket = new WebSocket('wss://glacial-stream-10615.herokuapp.com');
+    const socket = new WebSocket("wss://glacial-stream-10615.herokuapp.com");
 
     ws.current = socket;
     return () => {
@@ -34,9 +34,9 @@ function App() {
   };
 
   const handleSendMessage = () => {
-    if (user !== '') {
+    if (user !== "") {
       const dataToBackend = {
-        type: 'NEW_MESSAGE',
+        type: "NEW_MESSAGE",
         payload: {
           message: message,
           user: user,
@@ -49,7 +49,7 @@ function App() {
       // send message to backend socket works in local
       ws.current.send(JSON.stringify(dataToBackend));
 
-      let containerChatReference: any = document.getElementById('referencia');
+      let containerChatReference: any = document.getElementById("referencia");
 
       //creating chatUser component
 

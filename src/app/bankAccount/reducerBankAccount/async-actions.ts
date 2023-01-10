@@ -2,6 +2,8 @@ import { toastComponent } from '../../components/swalComponent'
 import * as actionTypes from './actions'
 import { fetchApi } from './http/httpActions'
 import { BankAccountState, DispatchType, IBankAccount, BankAccountAction } from './types'
+import axios from 'axios';
+
 
 export const testBankAccountAsync=(bankAccountData: IBankAccount)=> {
     
@@ -53,6 +55,8 @@ export const actionAsyncCloseBankAccount=(bankAccountData: IBankAccount)=> {
 
 export const httpRequestDeleteBank= (action:BankAccountAction)=>{
     return (dispatch: DispatchType) => {
+
+        
         fetchApi(
             `http://localhost:5001/api/v1/closeBankAccount/${action.bankAccountData.id}`,
             action.bankAccountData,"DELETE"

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import axios from "axios";
 
 import { Dispatch } from "redux";
 
@@ -19,15 +20,8 @@ const App: React.FC = () => {
   );
 
   React.useEffect(() => {
-    (async () => {
-      const data = await getBankAccounts(
-        "http://localhost:5003/api/v1/bankAccountLookup/"
-      );
-      console.log(data.accounts.accountHolder);
-      return data.accounts;
-    })().then((data) => {
-      console.log(data);
-      return dispatch(httpGetBankAccounts(data));
+    getBankAccounts().then((response) => {
+      return dispatch(httpGetBankAccounts(response?.data?.accounts));
     });
   }, []);
   console.log(bankAccountStore);
@@ -44,10 +38,10 @@ const App: React.FC = () => {
       <h1>TESTING API REST CQRS BANK ACCOUNT</h1>
       <PostBankAccount postBankAccount={testBankAccountApi} />
 
-      {bankAccountStore.map((data) => {
+      {bankAccountStore?.map((data) => {
         return (
           <ul>
-            <li key={data.id}>{data.accountHolder}</li>
+            <li key={data?.id}>{data?.accountHolder}</li>
           </ul>
         );
       })}

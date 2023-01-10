@@ -1,4 +1,6 @@
 import { IMessageFromPost } from './httpInterfaces'
+import axios from "axios";
+import { apiUrlReadBackend } from '../../api';
 
 export async function fetchApi(url = '', data = {},method:"GET"| "POST"|"PUT"|"DELETE"): Promise<any> {
     // Default options are marked with *
@@ -15,9 +17,9 @@ export async function fetchApi(url = '', data = {},method:"GET"| "POST"|"PUT"|"D
     return response.json() // parses JSON response into native JavaScript objects
 }
 
-export const getBankAccounts =async (url:any)=>{
-    const response = await fetch(url)
-    const data =await response.json();    
-    return data // parses JSO
+
+ export const getBankAccounts = async ()=>{
+
+  return axios.get(`${apiUrlReadBackend}/bankAccountLookup/`)
 
 }

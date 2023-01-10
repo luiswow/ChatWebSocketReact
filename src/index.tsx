@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { RoutesHandler } from "./routes/routes";
 import store from "./store";
-import { DashBoard } from "./dashBoardComponent/dashBoard";
+import { DashBoard } from "./app/components/dashBoardComponent/ts/dashBoard";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 

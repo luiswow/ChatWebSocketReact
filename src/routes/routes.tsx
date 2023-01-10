@@ -3,7 +3,7 @@ import { CloseBankAccount } from '../app/bankAccount/closeBankAccount/closeBankA
 import App from '../app/bankAccount/openingBankAccount/testAppBankAccountMain'
 import { BankAccountRoutes } from '../app/bankAccount/routes/bankAccountRoutes'
 // import { OpenBankAccount } from "../app/bank-account/openingBankAccount/openBankAccount"
-import { DashBoard } from '../dashBoardComponent/dashBoard'
+import { DashBoard } from "../app/components/dashBoardComponent/ts/dashBoard";
 import '../scss/style.scss'
 
 export function RoutesHandler() {
