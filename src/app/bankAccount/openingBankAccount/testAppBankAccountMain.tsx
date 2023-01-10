@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import axios from "axios";
 
 import { Dispatch } from "redux";
 
@@ -13,8 +12,16 @@ import {
 import { PostBankAccount } from "./openBankAccount";
 import { getBankAccounts } from "../reducerBankAccount/http/httpActions";
 
+import { IColumnType, Table } from "../../components/tableComponent/table";
+
 const App: React.FC = () => {
-  const bankAccountStore: readonly IBankAccount[] = useSelector(
+  interface IData {
+    fullName: string;
+    role: string;
+    tags: string[];
+  }
+
+  const bankAccountStore: IBankAccount[] = useSelector(
     (state: RootState) => state.bankAccountReducer.bankAccountsData,
     shallowEqual
   );
@@ -24,7 +31,6 @@ const App: React.FC = () => {
       return dispatch(httpGetBankAccounts(response?.data?.accounts));
     });
   }, []);
-  console.log(bankAccountStore);
 
   const dispatch: Dispatch<any> = useDispatch();
 
@@ -33,25 +39,57 @@ const App: React.FC = () => {
     [dispatch]
   );
 
+  const columns: IColumnType<any>[] = [
+    {
+      key: "id",
+      title: "id",
+      width: 200,
+    },
+    {
+      key: "accountHolder",
+      title: "Account holder",
+      width: 200,
+    },
+    // {
+    //   key: "actions",
+    //   title: "Actions",
+    //   width: 200,
+    //   render: (_, { tags }) => (
+    //     <>
+    //       {tags.map((tag: any, tagIndex: any) => (
+    //         <span key={`tag-${tagIndex}`} style={{ marginLeft: tagIndex * 4 }}>
+    //           {tag}
+    //         </span>
+    //       ))}
+    //     </>
+    //   ),
+    // },
+  ];
+  const data: IData[] = [
+    {
+      fullName: "Francisco Mendes",
+      role: "Full Stack",
+      tags: ["dev", "blogger"],
+    },
+    {
+      fullName: "Ricardo Malva",
+      role: "Social Media Manager",
+      tags: ["designer", "photographer"],
+    },
+  ];
+
+  console.log(bankAccountStore);
   return (
     <>
       <h1>TESTING API REST CQRS BANK ACCOUNT</h1>
       <PostBankAccount postBankAccount={testBankAccountApi} />
-
-      {bankAccountStore?.map((data) => {
-        return (
-          <ul>
-            <li key={data?.id}>{data?.accountHolder}</li>
-          </ul>
-        );
-      })}
-      {/* { bankAccountStore.map((bankAccount: IBankAccount) => (
-        <Article
-          key={article.id}
-          article={article}
-          removeArticle={removeArticle}
-        />
-      ))} */}
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <Table data={bankAccountStore} columns={columns} />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

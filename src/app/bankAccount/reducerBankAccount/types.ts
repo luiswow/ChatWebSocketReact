@@ -1,9 +1,8 @@
 
-
 export interface IBankAccount {
     accountHolder: string
     accountType: string
-    openingBalance: number
+    balance: number
     id?: string;
   }
   
