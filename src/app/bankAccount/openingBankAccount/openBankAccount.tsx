@@ -23,7 +23,7 @@ export const PostBankAccount: React.FC<Props> = ({ postBankAccount }) => {
     postBankAccount({
       accountHolder: bankAccount.accountHolder,
       accountType: "SAVINGS",
-      openingBalance: bankAccount.openingBalance,
+      balance: bankAccount.balance,
     });
   };
 
