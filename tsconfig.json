@@ -20,8 +20,9 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "typeRoots": ["src/@types"]
+        "typeRoots": ["src/@types","node_modules/@types"]
+        
     },
     "include": ["src"],
-    "types": ["jquery", "jquery-mask-plugin"]
+    "types": ["jquery", "jquery-mask-plugin", "node"]
 }

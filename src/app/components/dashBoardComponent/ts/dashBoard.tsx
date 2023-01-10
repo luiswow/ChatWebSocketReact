@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { RoutesHandler } from '../routes/routes';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { RoutesHandler } from "../../../../routes/routes";
+import { Link, NavLink } from "react-router-dom";
 
-import { sideBarClickLogic } from './sideBarClick';
+import { sideBarClickLogic } from "../sideBarClick";
 
 export const DashBoard = () => {
   useEffect(() => {
@@ -526,7 +526,7 @@ export const DashBoard = () => {
                     href="#"
                     className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                   >
-                    <i className="fas fa-download fa-sm text-white-50" />{' '}
+                    <i className="fas fa-download fa-sm text-white-50" />{" "}
                     Generate Report
                   </a>
                 </div>
