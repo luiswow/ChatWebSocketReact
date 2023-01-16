@@ -19,6 +19,7 @@ function Paginator(props: any) {
     <div>
       <div className="page-pagination">
         <Pagination
+          itemClass="ml-3"
           prevPageText={
             <>
               <i

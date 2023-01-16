@@ -38,7 +38,7 @@ export function Table<T>({ data, columns }: Props<T>): JSX.Element {
 
   return (
     <>
-      <table className="table table-striped col-8">
+      <table className="table col-sm-3 table-responsive-sm table-striped col-md-12 ">
         <thead>
           <TableHeader columns={columns} />
         </thead>
@@ -46,7 +46,7 @@ export function Table<T>({ data, columns }: Props<T>): JSX.Element {
         <tbody>
           <TableRow data={currentPosts} columns={columns} />
         </tbody>
-        <div className="offset-8">
+        <div className="">
           <Paginator
             onChangepage={pageHandler}
             postsPerPage={postsPerPage}

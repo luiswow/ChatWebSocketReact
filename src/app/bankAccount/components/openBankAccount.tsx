@@ -8,7 +8,6 @@ type Props = {
 
 export const PostBankAccount: React.FC<Props> = ({ postBankAccount }) => {
   const [bankAccount, setBankAccount]: any = useState<IBankAccount | {}>();
-  const [value, setValue] = useState<number>(0);
 
   const handleData = (e: React.FormEvent<HTMLInputElement>) => {
     setBankAccount({
@@ -23,7 +22,7 @@ export const PostBankAccount: React.FC<Props> = ({ postBankAccount }) => {
     postBankAccount({
       accountHolder: bankAccount.accountHolder,
       accountType: "SAVINGS",
-      balance: bankAccount.balance,
+      openingBalance: bankAccount.openingBalance,
     });
   };
 
@@ -50,17 +49,8 @@ export const PostBankAccount: React.FC<Props> = ({ postBankAccount }) => {
       </div>
 
       <button type="submit" className="btn btn-primary">
-        Submit
+        Create
       </button>
     </form>
-    // <form onSubmit={sendPostBankAccount} className="Add-article">
-
-    //     <input
-
-    //   />
-
-    //     SEND POST
-    //   </button>
-    // </form>
   );
 };

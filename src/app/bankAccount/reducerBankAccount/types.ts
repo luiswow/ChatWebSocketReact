@@ -2,8 +2,11 @@
 export interface IBankAccount {
     accountHolder: string
     accountType: string
-    balance: number
+    balance?: number
     id?: string;
+    openingBalance?:number
+    creationDate?: any
+    amount?:any
   }
   
  export  type BankAccountState = {

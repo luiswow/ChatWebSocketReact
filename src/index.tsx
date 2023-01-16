@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { RoutesHandler } from "./routes/routes";
 import store from "./store";
 import { DashBoard } from "./app/components/dashBoardComponent/ts/dashBoard";
+import "./scss/style.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 

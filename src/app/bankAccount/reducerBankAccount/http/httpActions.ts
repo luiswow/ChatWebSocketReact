@@ -1,4 +1,3 @@
-import { IMessageFromPost } from './httpInterfaces'
 import axios from "axios";
 import { apiUrlReadBackend } from '../../api';
 

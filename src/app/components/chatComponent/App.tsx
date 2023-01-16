@@ -1,20 +1,21 @@
-import "./App.css";
+import "../../../App.css";
 import { useEffect, useState, useRef } from "react";
 import {
   createChatUserComponent,
   createChatGuestComponent,
 } from "./chatContainers/chatContainers";
 
-function App() {
+function ChatWebSocket() {
   const [message, setMessage] = useState("");
   const [user, setUser] = useState("");
 
   const ws: any = useRef(null);
 
   useEffect(() => {
-    const socket = new WebSocket("wss://glacial-stream-10615.herokuapp.com");
+    const socket = new WebSocket("ws://143.110.153.239:8080");
 
     ws.current = socket;
+
     return () => {
       socket.close();
     };
@@ -66,6 +67,7 @@ function App() {
 
         containerChatReference.appendChild(chatGuestHtml);
       };
+      setMessage("");
     }
   };
 
@@ -109,7 +111,12 @@ function App() {
                 </div>
               </div>
               <div className="box-body">
-                <div id="referencia" className="direct-chat-messages"></div>
+                <div id="referencia" className="direct-chat-messages">
+                  <div>
+                    Welcome to the chat! To test the chat open a new tab and
+                    send a message.
+                  </div>
+                </div>
               </div>
               <div className="box-footer">
                 <div className="input-group">
@@ -132,7 +139,7 @@ function App() {
 
                   <span className="input-group-btn">
                     <button
-                      onClick={() => handleSendMessage}
+                      onClick={handleSendMessage}
                       type="button"
                       className="btn btn-warning btn-flat"
                     >
@@ -149,4 +156,4 @@ function App() {
   );
 }
 
-export default App;
+export default ChatWebSocket;

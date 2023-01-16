@@ -1,11 +1,16 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import { CloseBankAccount } from '../app/bankAccount/closeBankAccount/closeBankAccount'
-import App from "../app/bankAccount/openingBankAccount/testAppBankAccountMain";
-import { BankAccountRoutes } from '../app/bankAccount/routes/bankAccountRoutes'
-// import { OpenBankAccount } from "../app/bank-account/openingBankAccount/openBankAccount"
-import { DashBoard } from "../app/components/dashBoardComponent/ts/dashBoard";
-import '../scss/style.scss'
+import { Navigate, Route, Routes } from "react-router-dom";
+import { BankAccountRoutesModule } from "../app/bankAccount/routes/bankAccountRoutesModule";
+
+import ChatWebSocket from "../app/components/chatComponent/App";
 
 export function RoutesHandler() {
-    return <BankAccountRoutes />
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/bank" replace />} />
+        <Route path="bank/*" element={<BankAccountRoutesModule />} />
+        <Route path="/chat-web-socket" element={<ChatWebSocket />} />
+      </Routes>
+    </>
+  );
 }
